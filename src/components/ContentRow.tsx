@@ -13,6 +13,11 @@ interface ContentRowProps {
 }
 
 const ContentRow: React.FC<ContentRowProps> = ({ title, content }) => {
+  // Add defensive check for content array
+  if (!content || content.length === 0) {
+    return null;
+  }
+
   return (
     <div className="space-y-4">
       <h2 className="text-xl md:text-2xl font-bold text-white px-4 md:px-0">
@@ -30,6 +35,9 @@ const ContentRow: React.FC<ContentRowProps> = ({ title, content }) => {
                 alt={item.title}
                 className="w-full h-full object-cover"
                 loading="lazy"
+                onError={(e) => {
+                  e.currentTarget.src = "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=300&h=450&fit=crop&crop=top";
+                }}
               />
               <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-end p-3">
                 <h3 className="text-white font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm line-clamp-2">
