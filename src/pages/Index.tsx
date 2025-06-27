@@ -81,11 +81,11 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#141414] text-white">
+    <div className="min-vh-100" style={{ backgroundColor: '#141414', color: 'white' }}>
       <NetflixHeader onSignIn={handleSignIn} onSignUp={handleSignUp} />
       <HeroBanner onSignUp={handleSignUp} />
       
-      <div className="px-4 md:px-12 pb-8 space-y-8">
+      <div className="container-fluid px-3 px-md-5 pb-5">
         {contentCategories.map((category, index) => (
           <ContentRow 
             key={index}

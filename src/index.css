@@ -1,72 +1,63 @@
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'bootstrap/dist/css/bootstrap.min.css';
 
-@layer base {
-  :root {
-    --netflix-red: #E50914;
-    --netflix-dark: #141414;
-    --netflix-gray: #333333;
-    --netflix-light-gray: #B3B3B3;
-    --background: 0 0% 8%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 8%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 8%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 79% 45%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 20%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 20%;
-    --muted-foreground: 0 0% 70%;
-    --accent: 0 79% 45%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 0 79% 45%;
-    --radius: 0.5rem;
-  }
+:root {
+  --netflix-red: #E50914;
+  --netflix-dark: #141414;
+  --netflix-gray: #333333;
+  --netflix-light-gray: #B3B3B3;
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  
-  body {
-    @apply bg-background text-foreground;
-    background-color: #141414;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-  }
+body {
+  background-color: var(--netflix-dark);
+  color: white;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-@layer components {
-  .netflix-button {
-    @apply bg-[#E50914] hover:bg-[#f40612] text-white px-6 py-2 rounded font-semibold transition-all duration-200 transform hover:scale-105;
-  }
-  
-  .content-row {
-    @apply flex space-x-4 overflow-x-auto scrollbar-hide pb-4;
-  }
-  
-  .content-card {
-    @apply min-w-[200px] h-[300px] bg-gray-800 rounded-lg overflow-hidden cursor-pointer transform transition-all duration-300 hover:scale-110 hover:z-10;
-  }
-  
-  .hero-gradient {
-    background: linear-gradient(77deg, rgba(0,0,0,.6), transparent 85%);
-  }
-  
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
+.netflix-button {
+  background-color: var(--netflix-red);
+  border: none;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.netflix-button:hover {
+  background-color: #f40612;
+  transform: scale(1.05);
+  color: white;
+}
+
+.hero-gradient {
+  background: linear-gradient(77deg, rgba(0,0,0,.6), transparent 85%);
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.content-card {
+  min-width: 200px;
+  height: 300px;
+  background-color: var(--netflix-gray);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.content-card:hover {
+  transform: scale(1.1);
+  z-index: 10;
 }

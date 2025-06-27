@@ -21,50 +21,70 @@ const AuthModal: React.FC<AuthModalProps> = ({ mode, onClose, onSwitchMode }) =>
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75">
-      <div className="bg-[#141414] p-8 rounded-lg w-full max-w-md mx-4 relative">
+    <div className="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" 
+         style={{ backgroundColor: 'rgba(0,0,0,0.75)', zIndex: 1050 }}>
+      <div className="bg-dark p-4 rounded mx-3" style={{ width: '100%', maxWidth: '400px', backgroundColor: '#141414' }}>
         <button 
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+          className="btn btn-link position-absolute top-0 end-0 m-3 text-secondary p-0"
+          style={{ fontSize: '1.5rem' }}
         >
-          <X className="w-6 h-6" />
+          <X size={24} />
         </button>
         
-        <h2 className="text-2xl font-bold text-white mb-6">
+        <h2 className="fs-2 fw-bold text-white mb-4">
           {mode === 'login' ? 'Sign In' : 'Sign Up'}
         </h2>
         
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
             <input
               type="email"
               placeholder="Email address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full p-4 bg-[#333] text-white rounded border border-gray-600 focus:border-white focus:outline-none transition-colors"
+              className="form-control form-control-lg"
+              style={{ 
+                backgroundColor: '#333', 
+                border: '1px solid #666', 
+                color: 'white',
+                borderRadius: '4px'
+              }}
               required
             />
           </div>
           
-          <div>
+          <div className="mb-3">
             <input
               type="password"
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full p-4 bg-[#333] text-white rounded border border-gray-600 focus:border-white focus:outline-none transition-colors"
+              className="form-control form-control-lg"
+              style={{ 
+                backgroundColor: '#333', 
+                border: '1px solid #666', 
+                color: 'white',
+                borderRadius: '4px'
+              }}
               required
             />
           </div>
           
           {mode === 'signup' && (
-            <div>
+            <div className="mb-3">
               <input
                 type="password"
                 placeholder="Confirm Password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className="w-full p-4 bg-[#333] text-white rounded border border-gray-600 focus:border-white focus:outline-none transition-colors"
+                className="form-control form-control-lg"
+                style={{ 
+                  backgroundColor: '#333', 
+                  border: '1px solid #666', 
+                  color: 'white',
+                  borderRadius: '4px'
+                }}
                 required
               />
             </div>
@@ -72,19 +92,19 @@ const AuthModal: React.FC<AuthModalProps> = ({ mode, onClose, onSwitchMode }) =>
           
           <button 
             type="submit"
-            className="w-full netflix-button py-4 text-lg"
+            className="netflix-button btn w-100 py-3 fs-5"
           >
             {mode === 'login' ? 'Sign In' : 'Sign Up'}
           </button>
         </form>
         
-        <div className="mt-6 text-center">
-          <span className="text-gray-400">
+        <div className="mt-4 text-center">
+          <span className="text-secondary">
             {mode === 'login' ? "New to Netflix? " : "Already have an account? "}
           </span>
           <button 
             onClick={onSwitchMode}
-            className="text-white hover:underline transition-colors"
+            className="btn btn-link text-white p-0 text-decoration-underline"
           >
             {mode === 'login' ? 'Sign up now' : 'Sign in'}
           </button>
